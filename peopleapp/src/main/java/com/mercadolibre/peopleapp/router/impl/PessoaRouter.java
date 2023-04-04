@@ -8,7 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
+
+import static org.springframework.web.servlet.function.ServerResponse.status;
 
 
 @RestController
@@ -29,9 +32,16 @@ public class PessoaRouter {
         return ResponseEntity.ok(pessoaRepository.findAll());
     }
 
+
+
     @PostMapping
-    public ResponseEntity<Pessoa> cadastrar(@RequestBody Pessoa pessoa){
+    public ResponseEntity<Pessoa> cadastrar(@RequestBody @Valid Pessoa pessoa){
         return ResponseEntity.status(HttpStatus.CREATED).body(pessoaService.cadastrar(pessoa));
+
+    }
+    @PutMapping
+    public ResponseEntity<Pessoa> atualizar(@RequestBody Pessoa pessoa){
+        return ResponseEntity.status(HttpStatus.FOUND).body(pessoaService.atualizar(pessoa));
 
     }
 
