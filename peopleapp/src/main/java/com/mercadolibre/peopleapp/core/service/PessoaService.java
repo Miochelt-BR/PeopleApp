@@ -40,11 +40,15 @@ public class PessoaService {
         // Verifica se o CPF já está cadastrado para outra pessoa
         if (!pessoa.getCpf().equals(pessoaExistente.getCpf())
                 && pessoaRepository.findByCpf(pessoa.getCpf()) != null) {
+
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "CPF já cadastrado para outra pessoa!", null);
         }
+        if(pessoa.getNomeDoPai().isEmpty() && pessoa.getNomeDaMae().isEmpty()){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
 
-        // Não permite alteração do nome e CPF da pessoa
-        pessoa.setName(pessoaExistente.getName());
+        /** Não permite alteração do nome e CPF da pessoa*/
+
         pessoa.setCpf(pessoaExistente.getCpf());
 
         return pessoaRepository.save(pessoa);
