@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
+
 
 @Service
 public class PessoaService {
@@ -21,7 +21,7 @@ public class PessoaService {
 
     public Pessoa cadastrar(Pessoa pessoa) {
 
-        if(pessoa.getNomeDoPai().isEmpty() && pessoa.getNomeDaMae().isEmpty()){
+        if (pessoa.getNomeDoPai().isEmpty() && pessoa.getNomeDaMae().isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
 
@@ -43,7 +43,7 @@ public class PessoaService {
 
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "CPF já cadastrado para outra pessoa!", null);
         }
-        if(pessoa.getNomeDoPai().isEmpty() && pessoa.getNomeDaMae().isEmpty()){
+        if (pessoa.getNomeDoPai().isEmpty() && pessoa.getNomeDaMae().isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
 

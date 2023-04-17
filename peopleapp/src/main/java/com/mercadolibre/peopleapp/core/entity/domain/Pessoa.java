@@ -4,7 +4,6 @@ package com.mercadolibre.peopleapp.core.entity.domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +27,7 @@ public class Pessoa {
     private String cpf;
 
     @NotNull
-    @JsonFormat(pattern = "dd-MM-yyyy")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataDeNascimento;
 
 
@@ -37,6 +36,6 @@ public class Pessoa {
 
     private String nomeDaMae;
 
-    private String naturalide;
+    private String naturalidade;
 
 }
